@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Divisas en Tiempo Real</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>💱 Conversor de Divisas</h1>
+                <p class="subtitle">Tasas de cambio actualizadas en tiempo real</p>
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Converter Section -->
+            <section class="converter-section">
+                <div class="converter-card">
+                    <h2>Convertidor</h2>
+                    
+                    <div class="converter-grid">
+                        <!-- Monto de origen -->
+                        <div class="converter-group">
+                            <label for="amount">Monto</label>
+                            <input 
+                                type="number" 
+                                id="amount" 
+                                value="1" 
+                                min="0" 
+                                step="0.01"
+                                placeholder="Ingresa el monto"
+                            >
+                        </div>
+
+                        <!-- Moneda de origen -->
+                        <div class="converter-group">
+                            <label for="fromCurrency">De</label>
+                            <select id="fromCurrency">
+                                <option value="USD">USD - Dólar</option>
+                                <option value="EUR">EUR - Euro</option>
+                                <option value="GBP">GBP - Libra</option>
+                                <option value="JPY">JPY - Yen</option>
+                                <option value="AUD">AUD - Dólar Australiano</option>
+                                <option value="CAD">CAD - Dólar Canadiense</option>
+                                <option value="CHF">CHF - Franco Suizo</option>
+                                <option value="CNY">CNY - Yuan Chino</option>
+                                <option value="MXN">MXN - Peso Mexicano</option>
+                                <option value="ARS">ARS - Peso Argentino</option>
+                                <option value="BRL">BRL - Real Brasileño</option>
+                                <option value="INR">INR - Rupia India</option>
+                                <option value="KRW">KRW - Won Coreano</option>
+                                <option value="ZAR">ZAR - Rand Sudafricano</option>
+                                <option value="SGD">SGD - Dólar Singapur</option>
+                                <option value="HKD">HKD - Dólar Hong Kong</option>
+                                <option value="NZD">NZD - Dólar Neozelandés</option>
+                                <option value="RUB">RUB - Rublo Ruso</option>
+                                <option value="TRY">TRY - Lira Turca</option>
+                                <option value="SEK">SEK - Corona Sueca</option>
+                            </select>
+                        </div>
+
+                        <!-- Botón de intercambio -->
+                        <div class="swap-button-container">
+                            <button class="swap-btn" id="swapBtn" title="Intercambiar monedas">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <polyline points="19 12 12 19 5 12"></polyline>
+                                </svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                                    <polyline points="5 12 12 5 19 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Moneda de destino -->
+                        <div class="converter-group">
+                            <label for="toCurrency">Para</label>
+                            <select id="toCurrency">
+                                <option value="EUR">EUR - Euro</option>
+                                <option value="USD">USD - Dólar</option>
+                                <option value="GBP">GBP - Libra</option>
+                                <option value="JPY">JPY - Yen</option>
+                                <option value="AUD">AUD - Dólar Australiano</option>
+                                <option value="CAD">CAD - Dólar Canadiense</option>
+                                <option value="CHF">CHF - Franco Suizo</option>
+                                <option value="CNY">CNY - Yuan Chino</option>
+                                <option value="MXN">MXN - Peso Mexicano</option>
+                                <option value="ARS">ARS - Peso Argentino</option>
+                                <option value="BRL">BRL - Real Brasileño</option>
+                                <option value="INR">INR - Rupia India</option>
+                                <option value="KRW">KRW - Won Coreano</option>
+                                <option value="ZAR">ZAR - Rand Sudafricano</option>
+                                <option value="SGD">SGD - Dólar Singapur</option>
+                                <option value="HKD">HKD - Dólar Hong Kong</option>
+                                <option value="NZD">NZD - Dólar Neozelandés</option>
+                                <option value="RUB">RUB - Rublo Ruso</option>
+                                <option value="TRY">TRY - Lira Turca</option>
+                                <option value="SEK">SEK - Corona Sueca</option>
+                            </select>
+                        </div>
+
+                        <!-- Resultado -->
+                        <div class="converter-group result-group">
+                            <label for="result">Resultado</label>
+                            <input 
+                                type="text" 
+                                id="result" 
+                                readonly
+                                placeholder="0.00"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Exchange Rate Info -->
+                    <div class="exchange-info">
+                        <p id="exchangeRate" class="exchange-rate">Tasa de cambio: Cargando...</p>
+                        <p id="lastUpdate" class="last-update">Última actualización: -</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section class="history-section">
+                <div class="history-card">
+                    <div class="history-header">
+                        <h2>Historial de Conversiones</h2>
+                        <button class="clear-history-btn" id="clearHistoryBtn" title="Limpiar historial">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="history-list" id="historyList">
+                        <li class="history-empty">No hay conversiones aún</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Tasas en Tiempo Real</h3>
+                        <p>Obtén las tasas de cambio más actualizadas del mercado</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>20+ Divisas</h3>
+                        <p>Convierte entre las monedas más populares del mundo</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Conversión Instantánea</h3>
+                        <p>Resultados al instante mientras escribes</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h3>Historial Guardado</h3>
+                        <p>Accede a tu historial de conversiones anteriores</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Tema Oscuro</h3>
+                        <p>Alterna entre tema claro y oscuro</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Responsivo</h3>
+                        <p>Funciona perfectamente en móviles y escritorio</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Conversor de Divisas. Tasas actualizadas por <a href="https://www.frankfurter.app/" target="_blank">Frankfurter API</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
